@@ -1,8 +1,23 @@
-<form>
+<!--<div class="login-wrapper"></div>-->
+<!--<form class="login">-->
 
-    <input type="text">
-    <input type="text">
+<!--    <input type="text" [(ngModel)] = "credentials.email" placeholder="username" name="username">-->
+<!--    <input type="text" [(ngModel)] = "credentials.password" placeholder="password" name="password">-->
     
-    <button type="submit">Login</button>
+<!--    <button type="submit" (click) = "login()">Login</button>-->
 
-</form>
+<!--</form>-->
+
+<div class="login-wrapper">
+    <form class="login">
+        <section class="title">
+            <h3 class="welcome">Welcome to</h3>
+            StockScan
+        </section>
+        <div class="login-group">
+            <input class="email" type="text" [(ngModel)] = "credentials.email" placeholder="email" name="email"> <br>
+            <input class="password" type="password" id="login-passwords" [(ngModel)] = "credentials.password" placeholder="password" name="password">
+            <button type="submit" class="btn btn-primary" (click) = "login()">LOGIN</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,45 @@
+<div class="clr-row">
+<form class="clr-form clr-col-12">
+    <section class="title">
+            <h3 class="welcome">Let's get you</h3>
+            <h1> Registered! </h1>
+    </section>
+    <br>
+    <div class="clr-form-control">
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                <input type="text" name="firstname" [(ngModel)] = "user.firstName" placeholder="First Name"> 
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+        </div>
+    </div>
+    <div class="clr-form-control">
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                <input type="text" name="lastname" [(ngModel)] = "user.lastName" placeholder="Last Name">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+        </div>
+    </div>
+    <div class="clr-form-control">
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                <input type="email" name="email" [(ngModel)] = "user.email" placeholder="email">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+        </div>
+    </div>
+    <div class="clr-form-control">
+        <div class="clr-control-container">
+            <div class="clr-input-wrapper">
+                    <input type="password" name="password" [(ngModel)] = "user.password" placeholder="password">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+        </div>
+    </div>
+    
+    <br>
+    <button [disabled] = "!user.firstName || !user.lastName || !user.email || !user.password" type="submit" (click) = "register()">Register!</button>
+</form>
+</div>
+

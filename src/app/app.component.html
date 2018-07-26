@@ -11,12 +11,18 @@
           <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
       </div>
     <div class="header-actions">
+        <a href="#" class="nav-link nav-text" [routerLink]="['/registration']" routerLinkActive="active">
+            Join
+        </a>
+        <a href="#" class="nav-link nav-text" [routerLink]="['/login']" routerLinkActive="active">
+            Login
+        </a>
+        <app-logout></app-logout>
     </div>
   </clr-header>
   <div class="content-container">
     <div class="content-area">
-      <router-outlet></router-outlet>
-      <app-login></app-login>
+      <router-outlet></router-outlet> <br>
     </div>
   </div>
 </clr-main-container>
