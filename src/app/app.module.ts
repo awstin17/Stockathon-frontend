@@ -10,9 +10,10 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from './login/login.component';
 import {UserService } from './user.service';
-import {RegisterService} from './register.service';
+import {StockService} from './stock.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { LogoutComponent } from './logout/logout.component';
+import { TrendComponent } from './trend/trend.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { LogoutComponent } from './logout/logout.component';
         HomeComponent,
         LoginComponent,
         RegistrationComponent,
-        LogoutComponent
+        LogoutComponent,
+        TrendComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -31,7 +33,7 @@ import { LogoutComponent } from './logout/logout.component';
         ClarityModule,
         ROUTING
     ],
-    providers: [UserService, RegisterService],
+    providers: [UserService, StockService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
