@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ClarityModule } from '@clr/angular';
+import { ChartsModule } from 'ng2-charts';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
@@ -14,6 +15,7 @@ import {StockService} from './stock.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TrendComponent } from './trend/trend.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +25,8 @@ import { TrendComponent } from './trend/trend.component';
         LoginComponent,
         RegistrationComponent,
         LogoutComponent,
-        TrendComponent
+        TrendComponent,
+        ChartComponent,
     ],
     imports: [
         BrowserAnimationsModule,
@@ -31,6 +34,7 @@ import { TrendComponent } from './trend/trend.component';
         FormsModule,
         HttpClientModule,
         ClarityModule,
+        ChartsModule,
         ROUTING
     ],
     providers: [UserService, StockService],
