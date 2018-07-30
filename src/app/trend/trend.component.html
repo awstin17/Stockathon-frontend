@@ -1,7 +1,18 @@
-<div class="row">
-  <div class="col-md-6">
-    <div style="display: block;">
-    <canvas baseChart *ngIf="lineChartData" width="400" height="400"
+<!--<div class="content-container">-->
+<!--<div class="content-area">-->
+<!--<p style="flex-basis: 100%; border: 1px solid black; text-align: center">testing testing</p>-->
+<div  style="display: flex; justify-content: center; align-items: center; height: 40px;">
+  <div>
+<input style="padding: 10px; margin-top: 10px; margin-right: 10px;" class="search_input" type="text" name="abbreviation" [(ngModel)] = "abbreviation">
+<button class="btn btn-primary" (click)="onSearch()">Search</button>
+</div>
+</div>
+<br>
+<br>
+<div class="test">
+  <div>
+    <div>
+    <canvas baseChart *ngIf="lineChartData" width="500" height="250"
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
                 [options]="lineChartOptions"
@@ -11,7 +22,8 @@
                  ></canvas>
     </div>
   </div>
-  <div class="col-md-6" style="margin-bottom: 10px">
+  <br>
+  <div style="margin-bottom: 10px">
     <table class="table table-responsive table-condensed">
       <tr>
         <th *ngFor="let label of lineChartLabels">{{label}}</th>
@@ -20,8 +32,5 @@
         <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
       </tr>
     </table>
-    <input type="text" name="abbreviation" [(ngModel)] = "abbreviation">
   </div>
 </div>
-
-<button (click)="onSearch()">Button</button>

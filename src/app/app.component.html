@@ -8,7 +8,7 @@
     </div>
       <div class="header-nav" [clr-nav-level]="1">
           <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
+          <a class="nav-link" href="#" [routerLink]="['/chart']" routerLinkActive="active"><span class="nav-text">Past Trends</span></a>
       </div>
     <div class="header-actions">
         <a href="#" class="nav-link nav-text" [routerLink]="['/registration']" routerLinkActive="active">
@@ -23,7 +23,6 @@
   <div class="content-container">
     <div class="content-area">
       <router-outlet></router-outlet> <br>
-      <app-trend></app-trend>
     </div>
   </div>
 </clr-main-container>

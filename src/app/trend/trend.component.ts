@@ -13,9 +13,11 @@ export class TrendComponent implements OnInit {
   data: any;
   data2: any;
   closingNumbers: number[] = [];
+  months: number = 12;
+  i: number = 0;
   
   public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'}
+    {data: [], label: 'Series A'}
   ];
   public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   public lineChartOptions:any = {
@@ -67,23 +69,21 @@ export class TrendComponent implements OnInit {
     this._search.getData(this.abbreviation)
     .subscribe(
       (response: any) => {
-        this.data = response;
-        this.data2 = this.data["Monthly Time Series"];
+        this.i = 0;
         this.closingNumbers = [];
-        console.log(this.data2);
-        
-        for(let date in this.data2) {
-          let member = this.data2[date];
-          this.closingNumbers.push(member["4. close"]);
-          
-        }
-        this.closingNumbers = this.closingNumbers.slice(0, 12);
-        console.log(this.closingNumbers);
-        this.closingNumbers = this.closingNumbers.reverse();
-        console.log(this.closingNumbers);
-        this.updateChart();
         this.data = null;
         this.data2 = null;
+        this.data = response;
+        
+        for(let date in this.data["Monthly Time Series"]) {
+          if(this.i <= this.months){
+          this.i++;
+          this.closingNumbers.push(this.data["Monthly Time Series"][date]["4. close"]);
+          }
+        }
+        
+        this.closingNumbers = this.closingNumbers.slice(0, 12).reverse();
+        this.updateChart();
       }
       )
   }

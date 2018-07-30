@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import {LoginComponent } from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
+import {TrendComponent} from './trend/trend.component';
 
 
 export const ROUTES: Routes = [
@@ -17,7 +18,8 @@ export const ROUTES: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'about', component: AboutComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'registration', component: RegistrationComponent}
+    {path: 'registration', component: RegistrationComponent},
+    {path: 'chart', component: TrendComponent}
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);
