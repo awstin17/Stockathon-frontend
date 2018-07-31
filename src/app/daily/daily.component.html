@@ -1,0 +1,24 @@
+<p>Hello</p>
+<div *ngIf = "show">
+<div class="row" *ngFor = "let symbol of symbolData">
+    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                {{symbol["symbol"]}}
+            </div>
+            <div class="card-block">
+                <div class="card-title">
+                    {{symbol["1. open"]}}
+                </div>
+                <div class="card-text">
+                    {{symbol["2. high"]}}
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-link">Footer Action 1</button>
+                <button class="btn btn-sm btn-link">Footer Action 2</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

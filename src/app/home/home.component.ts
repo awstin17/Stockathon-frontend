@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit{
          this._service.getUser(window.sessionStorage.getItem('userId'), window.sessionStorage.getItem('token')).
          subscribe((response) => {
              this.user = response;
-             console.log(this.user);
+            //  console.log(this.user);
          })
     }
 

@@ -16,6 +16,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TrendComponent } from './trend/trend.component';
 import { ChartComponent } from './chart/chart.component';
+import { DailyComponent } from './daily/daily.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { ChartComponent } from './chart/chart.component';
         LogoutComponent,
         TrendComponent,
         ChartComponent,
+        DailyComponent,
     ],
     imports: [
         BrowserAnimationsModule,

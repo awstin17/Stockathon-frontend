@@ -9,12 +9,16 @@ import { map } from 'rxjs/operators';
 })
 export class TrendComponent implements OnInit {
 
-  abbreviation: string = "";
+  abbreviation = {ticker: ""};
+  ticker: "";
   data: any;
   data2: any;
   closingNumbers: number[] = [];
   months: number = 12;
   i: number = 0;
+  
+  
+  
   
   public lineChartData:Array<any> = [
     {data: [], label: 'Series A'}
@@ -63,12 +67,19 @@ export class TrendComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  addStock() {
+    this.abbreviation.ticker = this.ticker;
+    console.log(this.abbreviation);
+    this._search.addStockToFavorites(this.abbreviation, window.sessionStorage.getItem('userId'), window.sessionStorage.getItem('token'))
+      .subscribe(
+        )
+  }
 
   onSearch() {
     this._search.getData(this.abbreviation)
     .subscribe(
       (response: any) => {
+        console.log(response)
         this.i = 0;
         this.closingNumbers = [];
         this.data = null;
