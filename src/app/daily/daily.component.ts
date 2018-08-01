@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from '../stock.service';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-daily',
@@ -9,141 +10,70 @@ import { UserService } from '../user.service';
 })
 export class DailyComponent implements OnInit {
   
-  abbreviation: any = [];
-  data: any;
+  abbreviation: any = {
+    ticker: ""
+  }
+  tickers: any = [];
   symbolData: any = [];
-  userData: any;
   show: any;
-
+  userStocks: any;
   stockData: any;
-  stocks: string[] = ["MSFT", "GOOG"];
-  test: any;
-  objectToArray: Object[];
   
-  constructor(private _stock : StockService, private _user : UserService) { }
-
+  constructor(private _stockservice : StockService, private _userservice : UserService, private _router : Router) {};
+  
   getStock() {
     
-  this._stock.getFavorites(window.sessionStorage.getItem('userId'),  window.sessionStorage.getItem('token'))
+  //This first part makes a request to my database and receives an array of all stock objects that belong to the user
+  
+  this._stockservice.getFavorites(this._userservice.userId, this._userservice.userToken)
       .subscribe(
-        (res) => {
-          this.show=null;
-          console.log(res, "first part")
-          this.test = res
-          console.log(this.test)
-          for(let j = 0; j < this.test.length; j++) {
-            
-            console.log(this.test[j]);
-            this.abbreviation.push(this.test[j].ticker)
-            console.log(this.abbreviation);
+        (response) => {
+          this.userStocks = response;
+          
+          //This for loop loops through the array of stock objects and creates a new array of ticker strings
+          
+          for(let j = 0; j < this.userStocks.length; j++) {
+            this.tickers.push(this.userStocks[j].ticker)
           }
           
-           this._stock.getDailyData(this.abbreviation)
+          //This part takes that array of ticker strings and makes a request to get the most recent stock data for each of them
+          //The response is an array of the observables for each ticker
+          
+           this._stockservice.getDailyData(this.tickers)
             .subscribe(
-                (response) => {console.log(response, "hit")
+                (response) => {
                     this.stockData = response;
-                    for(let i = 0; i < this.stockData.length; i++) {
-                    console.log(this.stockData);
                     
+                    //These two for loops loop through the array of observables, and then only through the first data set for each ticker
+                    //In the loops, I take the most recent data for each ticker and assign it to an index of a new array of the most recent data sets for each ticker
+                    
+                    for(let i = 0; i < this.stockData.length; i++) {
                       for(let date in this.stockData[i]["Time Series (1min)"]) {
                         this.symbolData[i] = this.stockData[i]["Time Series (1min)"][date];
                         this.symbolData[i]["symbol"] = this.stockData[i]["Meta Data"]["2. Symbol"];
-                        console.log(this.symbolData);
+                        this.symbolData[i]["Last Refreshed"] = this.stockData[i]["Meta Data"]["3. Last Refreshed"];
                         break;
                       }
-                    // for(let i = 0; i < this.stockData.length; i++) {
-                    //   for(let date in this.stockData["Time Series (1min)"]) {
-                            // this.symbolData[i] = this.stockData[i]["Time Series (1min)"]["2018-07-30 14:21:00"];
-                            // this.symbolData[i]["symbol"] = this.stockData[i]["Meta Data"]["2. Symbol"];
-                              // break;
                     }
+                   
+                    //This is for my ngIf for the cards that display the data. Makes sure it happens only after 
+                    //the data is processed
                     this.show="plz show";
+                  
                 }
             )
         }
       )
-        //   this._stock.getDailyData(this.abbreviation)
-        //       .subscribe(
-         
-        // )}
-        
-        // this.userData = res;
-          // this.abbreviation = this.userData.cards;
-          // console.log(this.abbreviation)
-          // this._stock.getDailyData(this.abbreviation)
-        
-    // this._user.getUser(window.sessionStorage.getItem('userId'),  window.sessionStorage.getItem('token'))
-    //   .subscribe(
-    //     (res) => {
-    //       console.log(res, "first part")
-    //       this.userData = res;
-    //       this.abbreviation = this.userData.cards;
-    //       console.log(this.abbreviation)
-    //       this._stock.getDailyData(this.abbreviation)
-    //           .subscribe(
-    //               (response) => {console.log(response, "hit")
-    //                 this.stockData = response;
-    //                 for(let i = 0; i < this.stockData.length; i++) {
-    //                 console.log(this.stockData[0]["Time Series (1min)"]["2018-07-30 14:21:00"]);
-    //                 // for(let i = 0; i < this.stockData.length; i++) {
-    //                 //   for(let date in this.stockData["Time Series (1min)"]) {
-    //                         this.symbolData[i] = this.stockData[i]["Time Series (1min)"]["2018-07-30 14:21:00"];
-    //                         this.symbolData[i]["symbol"] = this.stockData[i]["Meta Data"]["2. Symbol"];
-    //                           // break;
-    //                   // }
-    //                 // }
-    //                 console.log(this.symbolData);}
-                    
-    //                 this.show="yes plz"
-    //               }
-                  
-                  
-    //               )
-    //                             }
-    //           )
-    // this._stock.getDailyData(this.stocks)
-    //   .subscribe(
-    //     (response) => {console.log(response, "hit")})
-                      
-      
-      
+  }
+  
+  onAdd() {
+    this._stockservice.addStockToFavorites(this.abbreviation, window.sessionStorage.getItem('userId'),  window.sessionStorage.getItem('token'))
+      .subscribe(
+        (response) => {console.log(response); window.location.reload();},
+        (error) => console.log(error)
+        )
   }
 
-  ngOnInit() {
-    
-    this.getStock();
-    
-    // this.show = null;
-    // this._user.getUser(window.sessionStorage.getItem('userId'),  window.sessionStorage.getItem('token'))
-    //   .subscribe(
-    //     (response) => {
-    //       this.userData = response;
-    //       this.abbreviation = this.userData.cards;
-    //       console.log("this is running");
-          
-    //       for(let i = 0; i < this.abbreviation.length; i++) {
-    // this._stock.getDailyData(this.abbreviation[i])
-    //   .subscribe(
-    //       (response) => {
-    //       this.data = response;
-
-          
-    //       for(let date in this.data["Time Series (1min)"]) {
-    //         this.symbolData[i] = this.data["Time Series (1min)"][date];
-    //       break;
-    //       }
-        
-    //       this.symbolData[i]["symbol"] = this.data["Meta Data"]["2. Symbol"];
-    //       this.show="yes plz";
-    //       },
-    //     )
-  //   } 
-          
-  //       }
-  //       )
-    
-    
-  }
-
+  ngOnInit() {this.getStock();}
 
 }

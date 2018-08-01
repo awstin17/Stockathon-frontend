@@ -18,7 +18,7 @@
         <a *ngIf = "!_userservice.userToken" href="#" class="nav-link nav-text" [routerLink]="['/login']" routerLinkActive="active">
             Login
         </a>
-        <app-logout class="nav-link nav-text" *ngIf = "_userservice.userToken"></app-logout>
+        <app-logout *ngIf = "_userservice.userToken"></app-logout>
     </div>
   </clr-header>
   <div class="content-container">

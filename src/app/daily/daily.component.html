@@ -1,23 +1,92 @@
-<div *ngIf = "show">
-<div class="row" *ngFor = "let symbol of symbolData">
-    <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+
+<!--<div *ngIf = "show" style="display: flex; justify-content: space-evenly ">-->
+<!--<div class="column" *ngFor = "let symbol of symbolData" style="margin: 10px">-->
+<!--    <div >-->
+<!--        <div class="card">-->
+<!--            <div class="card-header">-->
+<!--                {{symbol["symbol"]}}-->
+<!--            </div>-->
+<!--            <div class="card-block">-->
+<!--                <div class="card-title">-->
+<!--                    Latest Data Is From : {{symbol["Last Refreshed"]}}-->
+<!--                </div>-->
+<!--                <br>-->
+<!--                <div class="card-text">-->
+<!--                    Open : {{symbol["1. open"]}}-->
+<!--                </div>-->
+<!--                <div class="card-text">-->
+<!--                    High : {{symbol["2. high"]}}-->
+<!--                </div>-->
+<!--                <div class="card-text">-->
+<!--                    Low : {{symbol["3. low"]}}-->
+<!--                </div>-->
+<!--                <div class="card-text">-->
+<!--                    Close : {{symbol["4. close"]}}-->
+<!--                </div>-->
+<!--                <div class="card-text">-->
+<!--                    Volume : {{symbol["5. volume"]}}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card-footer">-->
+<!--                <button class="btn btn-sm btn-link">Delete Stock From Favorites</button>-->
+<!--            </div>-->
+            
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="content-container">
+        <div class="content-area">
+      <div style="display: flex; justify-content: center; position: relative; bottom: 50px">    
+         <h1 style="border-bottom: 2px solid black; padding: 5px 30%"> YOUR STOCKS </h1>
+      </div>
+<div *ngIf = "show" style="display: flex; flex-wrap: wrap; justify-content: space-evenly; position: relative; bottom: 50px ">
+<div class="column" *ngFor = "let symbol of symbolData" style="margin: 10px">
+    <div >
         <div class="card">
-            <div class="card-header">
+            <div style="text-align: center; background-color: #e5e6e8"class="card-header">
                 {{symbol["symbol"]}}
             </div>
             <div class="card-block">
                 <div class="card-title">
-                    {{symbol["1. open"]}}
+                    Latest Data Is From : {{symbol["Last Refreshed"]}}
+                </div>
+                <br>
+                <div class="card-text">
+                    Open : {{symbol["1. open"]}}
                 </div>
                 <div class="card-text">
-                    {{symbol["2. high"]}}
+                    High : {{symbol["2. high"]}}
+                </div>
+                <div class="card-text">
+                    Low : {{symbol["3. low"]}}
+                </div>
+                <div class="card-text">
+                    Close : {{symbol["4. close"]}}
+                </div>
+                <div class="card-text">
+                    Volume : {{symbol["5. volume"]}}
                 </div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-sm btn-link">Footer Action 1</button>
-                <button class="btn btn-sm btn-link">Footer Action 2</button>
+                <button class="btn btn-sm btn-link">Delete Stock From Favorites</button>
             </div>
+            
         </div>
     </div>
 </div>
 </div>
+            
+            
+        </div>
+        
+        <nav class="sidenav">
+            <section class="sidenav-content">
+                <br><br><br><br><br><br><br>
+                <input [(ngModel)] = "abbreviation.ticker" style="position: fixed; text-align: center; height: 50px; width: 17%; font-size: 200%; padding: 10px; margin-top: 10px; margin-right: 10px; bottom: 250px" class="search_input" type="text" name="abbreviation">
+                <button (click)="onAdd()" style="position: fixed; margin-top: 10px; margin-left: 2px; bottom: 190px" class="btn btn-primary" (click)="onAdd()">ADD TO YOUR STOCKS</button>
+                
+            </section>
+        </nav>
+    </div>
