@@ -11,7 +11,7 @@
 <br>
 <div class="test">
   <div>
-    <div>
+    <div *ngIf="lineChartLabels.length > 0">
     <canvas baseChart *ngIf="lineChartData" width="500" height="250"
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"

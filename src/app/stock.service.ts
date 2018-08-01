@@ -9,7 +9,7 @@ export class StockService {
 
   constructor(private http : HttpClient) { }
   
-  getData(abbreviation) {
+  getMonthlyData(abbreviation) {
    return this.http.get("https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=" + abbreviation + "&apikey=GGKHZQ2ZXMFO3FAY");
   }
   
