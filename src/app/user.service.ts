@@ -6,6 +6,8 @@ import {URLSearchParams} from '@angular/http';
 @Injectable()
 export class UserService {
   
+  userToken: string = "";
+  userId: string = "";
   APIURL: string = "http://summer-austin-2018-phortonssf.c9users.io:8080/api/appUsers";
   constructor(private http: HttpClient) { }
   

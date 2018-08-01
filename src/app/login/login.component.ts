@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
       alert("You are logged in!");
         window.sessionStorage.setItem('token', response.token);
         window.sessionStorage.setItem('userId', response.userId);
+        this._login.userToken = window.sessionStorage.getItem('token');
+        this._login.userId = window.sessionStorage.getItem('userId');
         this._router.navigate(['/home']);
       },
       (error) => alert("invalid credentials, booooo")
