@@ -9,16 +9,13 @@ import { map } from 'rxjs/operators';
 })
 export class TrendComponent implements OnInit {
 
-  abbreviation = {ticker: ""};
-  ticker: "";
+  character: any;
+  abbreviation: string = "";
   data: any;
   data2: any;
   closingNumbers: number[] = [];
   months: number = 12;
   i: number = 0;
-  
-  
-  
   
   public lineChartData:Array<any> = [
     {data: [], label: 'Series A'}
@@ -67,33 +64,40 @@ export class TrendComponent implements OnInit {
   ngOnInit() {
   }
 
-  addStock() {
-    this.abbreviation.ticker = this.ticker;
-    console.log(this.abbreviation);
-    this._search.addStockToFavorites(this.abbreviation, window.sessionStorage.getItem('userId'), window.sessionStorage.getItem('token'))
-      .subscribe(
-        )
-  }
+
 
   onSearch() {
+    console.log(this.abbreviation, "hit")
     this._search.getData(this.abbreviation)
     .subscribe(
       (response: any) => {
-        console.log(response)
         this.i = 0;
         this.closingNumbers = [];
         this.data = null;
         this.data2 = null;
         this.data = response;
+        console.log(this.data["Monthly Time Series"][""])
         
         for(let date in this.data["Monthly Time Series"]) {
+          if(this.i === 0) {
+            this.character = (date.charAt(5) == "0") ? date.charAt(6) : date.charAt(5) + date.charAt(6); console.log(this.character);
+          }
           if(this.i <= this.months){
           this.i++;
+          // console.log(date)
           this.closingNumbers.push(this.data["Monthly Time Series"][date]["4. close"]);
           }
         }
         
         this.closingNumbers = this.closingNumbers.slice(0, 12).reverse();
+        if (this.character) {
+          for(let k = 0; k < this.character; k++) {
+          this.lineChartLabels.push(this.lineChartLabels.shift());
+          console.log(this.lineChartLabels);
+          }
+          // this.lineChartLabels.reverse();
+          console.log(this.lineChartLabels);
+        }
         this.updateChart();
       }
       )

@@ -1,7 +1,9 @@
-
+<!--<div class="content-container">-->
+<!--<div class="content-area">-->
+<!--<p style="flex-basis: 100%; border: 1px solid black; text-align: center">testing testing</p>-->
 <div  style="display: flex; justify-content: center; align-items: center; height: 40px;">
   <div>
-<input style="padding: 10px; margin-top: 10px; margin-right: 10px;" class="search_input" type="text" name="abbreviation" [(ngModel)] = "ticker">
+<input style="padding: 10px; margin-top: 10px; margin-right: 10px;" class="search_input" type="text" name="abbreviation" [(ngModel)] = "abbreviation">
 <button class="btn btn-primary" (click)="onSearch()">Search</button>
 </div>
 </div>
@@ -10,7 +12,7 @@
 <div class="test">
   <div>
     <div>
-    <canvas baseChart *ngIf="lineChartData" width="1000" height="250"
+    <canvas baseChart *ngIf="lineChartData" width="500" height="250"
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
                 [options]="lineChartOptions"
@@ -32,5 +34,3 @@
     </table>
   </div>
 </div>
-
-<button (click)="addStock()">Add</button>
