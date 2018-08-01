@@ -3,8 +3,9 @@
 <!--<p style="flex-basis: 100%; border: 1px solid black; text-align: center">testing testing</p>-->
 <div  style="display: flex; justify-content: center; align-items: center; height: 40px;">
   <div>
-<input style="padding: 10px; margin-top: 10px; margin-right: 10px;" class="search_input" type="text" name="abbreviation" [(ngModel)] = "abbreviation">
+<input style="padding: 10px; margin-top: 10px; margin-right: 10px;" class="search_input" type="text" name="abbreviation" [(ngModel)] = "abbreviation.ticker">
 <button class="btn btn-primary" (click)="onSearch()">Search</button>
+<button class="btn btn-primary" (click)="onAdd()">Add to Favorites</button>
 </div>
 </div>
 <br>

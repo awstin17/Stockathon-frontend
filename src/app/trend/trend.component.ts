@@ -12,7 +12,9 @@ export class TrendComponent {
   constructor(private _stockservice : StockService) { }
 
   character: any;
-  abbreviation: string = "";
+  abbreviation: any = {
+    ticker: ""
+  }
   data: any;
   closingNumbers: number[] = [];
   months: number = 12;
@@ -96,7 +98,7 @@ export class TrendComponent {
   //Then, if you get a successful response, it saves that data, manipulates it to a presentable form, then updates the chart
 
   onSearch() {
-    this._stockservice.getMonthlyData(this.abbreviation)
+    this._stockservice.getMonthlyData(this.abbreviation.ticker)
     .subscribe(
       (response: any) => {
         
@@ -109,5 +111,13 @@ export class TrendComponent {
         this.updateChart();
       }
     )
+  }
+  
+  onAdd() {
+    this._stockservice.addStockToFavorites(this.abbreviation, window.sessionStorage.getItem('userId'),  window.sessionStorage.getItem('token'))
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+        )
   }
 }
