@@ -19,8 +19,8 @@ export class UserService {
   }
   
   logout(token) {
-    // return this.http.post(this.APIURL + "/logout" + "?access_token=" + token, {});
-    return this.http.post("http://summer-austin-2018-phortonssf.c9users.io:8080/api/appUsers/logout?access_token=OBivUmsbh7C9DRkLS9NX7VLpDOmdlTbmyIqJWjYO2HA2lefZX4UU55RnXOT2R7L6", {});
+    return this.http.post(this.APIURL + "/logout" + "?access_token=" + token, {});
+    // return this.http.post("http://summer-austin-2018-phortonssf.c9users.io:8080/api/appUsers/logout?access_token=OBivUmsbh7C9DRkLS9NX7VLpDOmdlTbmyIqJWjYO2HA2lefZX4UU55RnXOT2R7L6", {});
     
   }
   

@@ -14,7 +14,13 @@ export class AppComponent implements OnInit{
     }
     
     ngOnInit() {
+        if(this._userservice.userToken) {
+            console.log(this._userservice.userToken)
         this.router.navigate(['/home']);
+        }
+        else { this.router.navigate(['/about']);
+            console.log(this._userservice.userToken)
+        }
     }
     
 }

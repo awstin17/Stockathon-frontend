@@ -6,10 +6,10 @@
         <span class="title">Stockathon</span>
       </a>
     </div>
-      <div *ngIf = "_userservice.userToken" class="header-nav" [clr-nav-level]="1">
+      <div class="header-nav" [clr-nav-level]="1">
           <a *ngIf = "!_userservice.userToken" class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/chart']" routerLinkActive="active"><span class="nav-text">Past Trends</span></a>
+          <a *ngIf = "_userservice.userToken" class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
+          <a *ngIf = "_userservice.userToken" class="nav-link" href="#" [routerLink]="['/chart']" routerLinkActive="active"><span class="nav-text">Past Trends</span></a>
       </div>
     <div class="header-actions">
         <a *ngIf = "!_userservice.userToken" href="#" class="nav-link nav-text" [routerLink]="['/registration']" routerLinkActive="active">
@@ -18,7 +18,7 @@
         <a *ngIf = "!_userservice.userToken" href="#" class="nav-link nav-text" [routerLink]="['/login']" routerLinkActive="active">
             Login
         </a>
-        <app-logout  *ngIf = "_userservice.userToken"></app-logout>
+        <app-logout class="nav-link nav-text" *ngIf = "_userservice.userToken"></app-logout>
     </div>
   </clr-header>
   <div class="content-container">
