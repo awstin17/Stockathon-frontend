@@ -1,19 +1,15 @@
-<!--<div class="content-container">-->
-<!--<div class="content-area">-->
-<!--<p style="flex-basis: 100%; border: 1px solid black; text-align: center">testing testing</p>-->
-<div  style="display: flex; justify-content: center; align-items: center; height: 40px;">
-  <div>
-<input style="padding: 10px; margin-top: 10px; margin-right: 10px;" class="search_input" type="text" name="abbreviation" [(ngModel)] = "abbreviation.ticker">
-<button class="btn btn-primary" (click)="onSearch()">Search</button>
-<button class="btn btn-primary" (click)="onAdd()">Add to Favorites</button>
-</div>
+<div style="display: flex; justify-content: space-evenly">
+<div  style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-right: 10px; border-right: 1px solid black;">
+<input style="width: 200px; height: 50px; text-align: center; font-size: 200%; position: relative; right: 20px; margin-bottom: 5px" class="search_input" type="text" name="abbreviation" [(ngModel)] = "abbreviation.ticker">
+<button style="position: relative; right: 15px;" class="btn btn-primary" (click)="onSearch()">Search</button>
+<button style="position: relative; right: 15px;" class="btn btn-primary" (click)="onAdd()">Add to Favorites</button>
 </div>
 <br>
 <br>
-<div class="test">
+
   <div>
     <div *ngIf="lineChartLabels.length > 0">
-    <canvas baseChart *ngIf="lineChartData" width="500" height="250"
+    <canvas baseChart *ngIf="lineChartData" width="700" height="350"
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
                 [options]="lineChartOptions"
@@ -24,6 +20,7 @@
     </div>
   </div>
   <br>
+</div>
   <div style="margin-bottom: 10px">
     <table class="table table-responsive table-condensed">
       <tr>
@@ -34,4 +31,6 @@
       </tr>
     </table>
   </div>
-</div>
+
+
+

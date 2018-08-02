@@ -29,9 +29,9 @@ export class TrendComponent {
   };
   public lineChartColors:Array<any> = [
     { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      backgroundColor: 'rgba(2,95,247,0.2)',
+      borderColor: 'rgba(79,141,244,1)',
+      pointBackgroundColor: 'rgba(0,7,17,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
@@ -116,7 +116,7 @@ export class TrendComponent {
   onAdd() {
     this._stockservice.addStockToFavorites(this.abbreviation, window.sessionStorage.getItem('userId'),  window.sessionStorage.getItem('token'))
       .subscribe(
-        (response) => console.log(response),
+        (response) => {console.log(response); alert("Successfully added to your stocks!")},
         (error) => console.log(error)
         )
   }
