@@ -6,7 +6,7 @@ import {URLSearchParams} from '@angular/http';
 @Injectable()
 export class UserService {
   
-  APIURL: string = "http://summer-austin-2018-phortonssf.c9users.io:8080/api/appUsers";
+  APIURL: string = "https://stockathon-backend.herokuapp.com/api/appUsers";
   constructor(private http: HttpClient) { }
   
   login(credentials) {
