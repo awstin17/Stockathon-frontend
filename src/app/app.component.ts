@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
     beforeRoute: any;
     afterRoute: any;
     
-    constructor(private router: Router, private _userservice : UserService) {
+    constructor(public router: Router, public _userservice : UserService) {
         this.router.events.filter(e => e.constructor.name === 'RoutesRecognized').pairwise().subscribe((e) => {
             // console.log(e);
             this.beforeRoute = e[0];
