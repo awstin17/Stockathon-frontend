@@ -16,14 +16,17 @@ export class LogoutComponent implements OnInit {
   }
 
   onLogout() {
-    this._service.logout(window.sessionStorage.getItem('token'))
-      .subscribe(
-        (response) => {alert("you're logged out! yay!");
+    // this._service.logout(window.sessionStorage.getItem('token'))
+    //   .subscribe(
+        // (response) => {
+          alert("you're logged out! yay!");
         window.sessionStorage.clear();
+        this._service.userToken = "";
+        this._service.userId = "";
         this.router.navigate(['/login']);
-        }
+        // }
         
         
-        )
+        // )
   }
 }

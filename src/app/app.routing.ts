@@ -11,15 +11,17 @@ import { HomeComponent } from './home/home.component';
 import {LoginComponent } from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {TrendComponent} from './trend/trend.component';
+import {DailyComponent} from './daily/daily.component';
 
 
 export const ROUTES: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
+    {path: 'nada', component: HomeComponent},
     {path: 'about', component: AboutComponent},
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponent},
-    {path: 'chart', component: TrendComponent}
+    {path: 'chart', component: TrendComponent},
+    {path: 'home', component: DailyComponent}
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);

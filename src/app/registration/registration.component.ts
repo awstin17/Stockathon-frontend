@@ -17,17 +17,19 @@ export class RegistrationComponent implements OnInit {
   password: ""
   }
 
-  constructor(private _register : UserService, private _router : Router) { }
+  constructor(private _userservice : UserService, private _router : Router) { }
 
   ngOnInit() {
   }
 
   register() {
-    this._register.register(this.user)
+    this._userservice.register(this.user)
     .subscribe(
      (res: any) => { console.log(res);
       window.sessionStorage.setItem('token', res.token);
       window.sessionStorage.setItem('userId', res.userId); 
+      this._userservice.userToken = window.sessionStorage.getItem('token');
+      this._userservice.userId = this._userservice.userToken = window.sessionStorage.getItem('userId');
       this._router.navigate(['/home']);
      }
       )
