@@ -16,18 +16,20 @@ export class LoginComponent implements OnInit {
   }
   
 
-  constructor(private _login : UserService, private _router : Router) { }
+  constructor(private _userservice : UserService, private _router : Router) { }
 
   ngOnInit() {
   }
   
   login() {
-    this._login.login(this.credentials)
+    this._userservice.login(this.credentials)
     .subscribe(
       (response: any) => {console.log(response);
       alert("You are logged in!");
         window.sessionStorage.setItem('token', response.token);
         window.sessionStorage.setItem('userId', response.userId);
+        this._userservice.userToken = window.sessionStorage.getItem('token');
+        this._userservice.userId = window.sessionStorage.getItem('userId');
         this._router.navigate(['/home']);
       },
       (error) => alert("invalid credentials, booooo")

@@ -14,16 +14,10 @@ import { UserService } from '../user.service';
 })
 export class HomeComponent implements OnInit{
     
-    user: any;
-    
     constructor(private _service: UserService) {}
     
     ngOnInit() {
-         this._service.getUser(window.sessionStorage.getItem('userId'), window.sessionStorage.getItem('token')).
-         subscribe((response) => {
-             this.user = response;
-             console.log(this.user);
-         })
+         
     }
 
 }
