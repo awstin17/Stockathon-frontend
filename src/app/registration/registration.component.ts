@@ -26,6 +26,7 @@ export class RegistrationComponent implements OnInit {
     this._userservice.register(this.user)
     .subscribe(
      (res: any) => { console.log(res);
+      alert('Thank you for registering!')
       window.sessionStorage.setItem('token', res.token);
       window.sessionStorage.setItem('userId', res.userId); 
       this._userservice.userToken = window.sessionStorage.getItem('token');

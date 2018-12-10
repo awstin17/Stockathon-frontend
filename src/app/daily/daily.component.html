@@ -1,10 +1,10 @@
 <div class="content-container">
         <div class="content-area">
       <div style="display: flex; justify-content: center; position: relative; bottom: 50px">    
-         <h1 style="border-bottom: 2px solid black; padding: 5px 30%"> YOUR STOCKS </h1>
+         <h1 style="border-bottom: 2px solid black; width: 80%; text-align: center"> YOUR STOCKS </h1>
       </div>
 <div *ngIf = "show" style="display: flex; flex-wrap: wrap; justify-content: space-evenly; position: relative; bottom: 50px ">
-<div class="column" *ngFor = "let symbol of symbolData" style="margin: 10px">
+<div class="column" *ngFor = "let symbol of symbolData; let i = index;" style="margin: 10px">
     <div >
         <div class="card">
             <div style="text-align: center; background-color: #e5e6e8"class="card-header">
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-sm btn-link">Delete Stock From Favorites</button>
+                <button class="btn btn-sm btn-link" (click)="deleteStock(i, symbol.appUserId, symbol.stockId)">Delete Stock From Favorites</button>
             </div>
             
         </div>
@@ -44,9 +44,9 @@
         
         <nav class="sidenav">
             <section class="sidenav-content">
-                <br><br><br><br><br><br><br>
+                
                 <input [(ngModel)] = "abbreviation.ticker" style="position: fixed; text-align: center; height: 50px; width: 17%; font-size: 200%; padding: 10px; margin-top: 10px; margin-right: 10px; bottom: 250px" class="search_input" type="text" name="abbreviation">
-                <button (click)="onAdd()" style="position: fixed; margin-top: 10px; margin-left: 2px; bottom: 190px" class="btn btn-primary" (click)="onAdd()">ADD TO YOUR STOCKS</button>
+                <button (click)="onAdd()" style="position: fixed; margin-top: 10px; margin-left: 2px; bottom: 190px" class="btn btn-primary">ADD TO YOUR STOCKS</button>
                 
             </section>
         </nav>

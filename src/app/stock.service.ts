@@ -16,7 +16,7 @@ export class StockService {
   getDailyData(stocks) {
    return Observable
      .forkJoin(stocks
-       .map((stock) => this.http.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + stock + "&interval=1min&apikey=GGKHZQ2ZXMFO3FAY")
+       .map((stock) => this.http.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + stock.ticker + "&interval=1min&apikey=GGKHZQ2ZXMFO3FAY")
        )
      )
      
@@ -28,5 +28,9 @@ export class StockService {
   
   getFavorites(id, token) {
    return this.http.get("https://stockathon-backend.herokuapp.com/api/appUsers/" + id + "/stocks?access_token=" + token)
+  }
+
+  deleteStock(userId, stockId) {
+    return this.http.delete("https://stockathon-backend.herokuapp.com/api/appUsers/" + userId + "/stocks/" + stockId + "?access_token=" + window.sessionStorage.getItem('token'))
   }
 }

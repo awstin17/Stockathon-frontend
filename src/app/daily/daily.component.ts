@@ -13,7 +13,8 @@ export class DailyComponent implements OnInit {
   abbreviation: any = {
     ticker: ""
   }
-  tickers: any = [];
+  // tickers: any = [];
+  ticker
   symbolData: any = [];
   show: any;
   userStocks: any;
@@ -29,17 +30,19 @@ export class DailyComponent implements OnInit {
       .subscribe(
         (response) => {
           this.userStocks = response;
+          console.log(this.userStocks);
           
           //This for loop loops through the array of stock objects and creates a new array of ticker strings
           
-          for(let j = 0; j < this.userStocks.length; j++) {
-            this.tickers.push(this.userStocks[j].ticker)
-          }
+          // for(let j = 0; j < this.userStocks.length; j++) {
+           
+          //   this.tickers.push(this.userStocks[j].ticker)
+          // }
           
           //This part takes that array of ticker strings and makes a request to get the most recent stock data for each of them
           //The response is an array of the observables for each ticker
           
-           this._stockservice.getDailyData(this.tickers)
+           this._stockservice.getDailyData(this.userStocks)
             .subscribe(
                 (response) => {
                     this.stockData = response;
@@ -52,6 +55,8 @@ export class DailyComponent implements OnInit {
                         this.symbolData[i] = this.stockData[i]["Time Series (1min)"][date];
                         this.symbolData[i]["symbol"] = this.stockData[i]["Meta Data"]["2. Symbol"];
                         this.symbolData[i]["Last Refreshed"] = this.stockData[i]["Meta Data"]["3. Last Refreshed"];
+                        this.symbolData[i]["appUserId"] = this.userStocks[i].appUserId;
+                        this.symbolData[i]["stockId"] = this.userStocks[i].id;
                         break;
                       }
                     }
@@ -75,5 +80,15 @@ export class DailyComponent implements OnInit {
   }
 
   ngOnInit() {this.getStock();}
+
+  deleteStock(i, userId, stockId) {
+    this.symbolData.splice(i, 1);
+    console.log(userId, stockId)
+    this._stockservice.deleteStock(userId, stockId)
+      .subscribe(
+        (res) => console.log('success!'),
+        (err) => console.log('failure :(')
+      )
+  }
 
 }
