@@ -1,4 +1,4 @@
-<div class="clr-row">
+<!-- <div class="clr-row">
 <form class="clr-form clr-col-12">
     <section class="title">
             <h3 class="welcome">Let's get you</h3>
@@ -41,5 +41,22 @@
     <br>
     <button [disabled] = "!user.firstName || !user.lastName || !user.email || !user.password" type="submit" (click) = "register()">Register!</button>
 </form>
-</div>
+</div> -->
+
+<div class="login-wrapper">
+        <form class="login">
+            <section class="title">
+                <h3 class="welcome">Get Registered With</h3>
+                Stockathon!
+            </section>
+            <div class="login-group">
+                    <input type="text" name="firstname" [(ngModel)] = "user.firstName" placeholder="First Name">
+                    <br><input type="text" name="lastname" [(ngModel)] = "user.lastName" placeholder="Last Name">
+                    <br><input type="email" name="email" [(ngModel)] = "user.email" placeholder="email">
+                    
+                    <br><input type="password" name="password" [(ngModel)] = "user.password" placeholder="password">
+                   <button class="btn btn-primary" [disabled] = "!user.firstName || !user.lastName || !user.email || !user.password" type="submit" (click) = "register()">Register!</button>
+            </div>
+        </form>
+    </div>
 

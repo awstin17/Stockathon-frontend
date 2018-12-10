@@ -25,7 +25,8 @@ export class TrendComponent {
   ];
   public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   public lineChartOptions:any = {
-    responsive: true
+    responsive: true,
+    maintainAspectRatio: false
   };
   public lineChartColors:Array<any> = [
     { // grey
