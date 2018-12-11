@@ -7,7 +7,11 @@ Stockathon allows users to track stocks they care about and look up trends for n
 Getting started
 ----------------------------------
 
+Stockathon is an Angular project using typescript. The backend API uses MongoDB as a data source for a loopback api server. The corresponding backend server can be found at: 
 
+```
+https://github.com/awstin17/Stockathon-backend
+```
 
 ### Installation
 
@@ -36,6 +40,14 @@ http://localhost:4200/
 ```
 Just open a web browser and copy and paste that in to view.
 
-### Branches
+## Branches
 
 The most important branch is `master` on this project. This will always be the latest released version of the app. It is also the branch whose build is hosted for you to demo [here](https://stockathon.netlify.com) on Netlify.
+
+## Built With
+
+* [Ionic](https://ionicframework.com/)
+* [Angular](https://angular.io/)
+* [MongoDB](https://www.mongodb.com/)
+* [Loopback](http://loopback.io/)
+* [Ng2-Charts](https://valor-software.com/ng2-charts/)
