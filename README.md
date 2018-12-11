@@ -17,8 +17,7 @@ https://github.com/awstin17/Stockathon-backend
 
 #### Prerequisites: 
 
-Please install Angular-CLI by following [these instructions](https://github.com/angular/angular-cli#installation).
-Also make sure node and npm are installed. Please make sure to install at least Node  version 8.11.2 and NPM version 5.6 and Angular-cli version 6.0.8. 
+Please install Angular-CLI by following [these instructions](https://github.com/angular/angular-cli#installation). Please make sure to install at least Node  version 8.11.2 and NPM version 5.6 and Angular-cli version 6.0.8. 
 
 Clone the remote repository
 
@@ -46,7 +45,6 @@ The most important branch is `master` on this project. This will always be the l
 
 ## Built With
 
-* [Ionic](https://ionicframework.com/)
 * [Angular](https://angular.io/)
 * [MongoDB](https://www.mongodb.com/)
 * [Loopback](http://loopback.io/)
