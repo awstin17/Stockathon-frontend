@@ -10,13 +10,13 @@ export class StockService {
   constructor(private http : HttpClient) { }
   
   getMonthlyData(abbreviation) {
-   return this.http.get("https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=" + abbreviation + "&apikey=GGKHZQ2ZXMFO3FAY");
+   return this.http.get("https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=" + abbreviation + "&apikey=T5397L2SSQQ1C8H9");
   }
   
   getDailyData(stocks) {
    return Observable
      .forkJoin(stocks
-       .map((stock) => this.http.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + stock.ticker + "&interval=1min&apikey=GGKHZQ2ZXMFO3FAY")
+       .map((stock) => this.http.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + stock.ticker + "&interval=1min&apikey=T5397L2SSQQ1C8H9")
        )
      )
      
