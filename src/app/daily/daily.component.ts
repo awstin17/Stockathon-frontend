@@ -71,7 +71,17 @@ export class DailyComponent implements OnInit {
       )
   }
   
-  onAdd() {
+  checkIsRealStock() {
+    this._stockservice.getMonthlyData(this.abbreviation.ticker)
+      .subscribe(
+        (response) => {if(response["Error Message"]) {window.alert("This is not a real stock symbol. Try another")}
+                       else {this.addStock()}},
+        (error) => {},
+        () => {}
+        )
+  }
+
+  addStock() {
     this._stockservice.addStockToFavorites(this.abbreviation, window.sessionStorage.getItem('userId'),  window.sessionStorage.getItem('token'))
       .subscribe(
         (response) => {console.log(response); window.location.reload();},

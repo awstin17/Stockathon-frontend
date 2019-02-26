@@ -46,7 +46,7 @@
             <section class="sidenav-content">
                 
                 <input [(ngModel)] = "abbreviation.ticker" style="position: fixed; text-align: center; height: 50px; width: 193px; font-size: 200%; padding: 10px; margin-top: 10px; margin-right: 10px; bottom: 250px" class="search_input" type="text" name="abbreviation">
-                <button (click)="onAdd()" style="position: fixed; margin-top: 10px; margin-left: 2px; bottom: 190px" class="btn btn-primary">ADD TO YOUR STOCKS</button>
+                <button (click)="checkIsRealStock()" style="position: fixed; margin-top: 10px; margin-left: 2px; bottom: 190px" class="btn btn-primary">ADD TO YOUR STOCKS</button>
                 
             </section>
         </nav>
