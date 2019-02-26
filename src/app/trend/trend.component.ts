@@ -113,8 +113,18 @@ export class TrendComponent {
       }
     )
   }
+
+  checkIsRealStock() {
+    this._stockservice.getMonthlyData(this.abbreviation.ticker)
+      .subscribe(
+        (response) => {if(response["Error Message"]) {window.alert("This is not a real stock symbol. Try another")}
+                       else {this.addStock()}},
+        (error) => {},
+        () => {}
+        )
+  }
   
-  onAdd() {
+  addStock() {
     this._stockservice.addStockToFavorites(this.abbreviation, window.sessionStorage.getItem('userId'),  window.sessionStorage.getItem('token'))
       .subscribe(
         (response) => {console.log(response); alert("Successfully added to your stocks!")},
