@@ -1,3 +1,14 @@
+.trendDescription {
+    text-align: center;
+    font-size: 18px;
+}
+
+@media(min-width: 600px) {
+    .trendDescription {
+        font-size: 24px;
+    }
+}
+
 .buttonChartContainer {
     display: flex; justify-content: space-between;
 }
