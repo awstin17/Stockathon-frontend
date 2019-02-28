@@ -1,11 +1,57 @@
-.test {
-    display: inline-flex;
-    flex-wrap: wrap;
-    // align-items: center;
-    justify-content: center;
-    // border: 1px solid black
+.buttonChartContainer {
+    display: flex; justify-content: space-between;
 }
 
-.content-area {
-    
+@media(max-width: 975px) {
+    .buttonChartContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.trendInputButtonContainer {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    padding-right: 10px; 
+    border-right: 1px solid black; 
+    margin-left: 20px;
+}
+
+@media(max-width: 975px) {
+    .trendInputButtonContainer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0px;
+        border: 0px;
+        justify-content: space-evenly;
+        width: 80%;
+    }
+}
+
+.search_input {
+    width: 200px; 
+    height: 50px; 
+    text-align: center; 
+    font-size: 200%; 
+    position: relative; 
+    right: 20px; 
+    margin-bottom: 5px;
+}
+
+@media(max-width: 975px) {
+    .search_input {
+        right: 0px;
+    }
+}
+
+.sidenavButtons {
+    position: relative; 
+    right: 15px;
+}
+
+@media(max-width: 975px) {
+    .sidenavButtons {
+        right: 0px;
+    }
 }
