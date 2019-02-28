@@ -1,53 +1,61 @@
 <div class="content-container">
-        <div class="content-area" style="min-height: 500px">
-      <div style="display: flex; justify-content: center; position: relative; bottom: 50px">    
-         <h1 style="border-bottom: 2px solid black; width: 80%; text-align: center"> YOUR STOCKS </h1>
-      </div>
-<div *ngIf = "show" style="display: flex; flex-wrap: wrap; justify-content: space-evenly; position: relative; bottom: 50px ">
-<div class="column" *ngFor = "let symbol of symbolData; let i = index;" style="margin: 10px">
-    <div >
-        <div class="card">
-            <div style="text-align: center; background-color: #e5e6e8"class="card-header">
-                {{symbol["symbol"]}}
-            </div>
-            <div class="card-block">
-                <div class="card-title">
-                    Latest Data Is From : {{symbol["Last Refreshed"]}}
-                </div>
-                <br>
-                <div class="card-text">
-                    Open : {{symbol["1. open"]}}
-                </div>
-                <div class="card-text">
-                    High : {{symbol["2. high"]}}
-                </div>
-                <div class="card-text">
-                    Low : {{symbol["3. low"]}}
-                </div>
-                <div class="card-text">
-                    Close : {{symbol["4. close"]}}
-                </div>
-                <div class="card-text">
-                    Volume : {{symbol["5. volume"]}}
-                </div>
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-sm btn-link" (click)="deleteStock(i, symbol.appUserId, symbol.stockId)">Delete Stock From Favorites</button>
-            </div>
-            
+    <div class="content-area" style="min-height: 500px">
+
+        <div class="dailyInputAddStockContainerMobile">
+            <input [(ngModel)]="abbreviation.ticker" class="dailyInput" type="text" name="abbreviation">
+            <button (click)="checkIsRealStock()" class="btn btn-primary dailyAddStock">ADD TO YOUR STOCKS</button>
         </div>
-    </div>
-</div>
-</div>
-            
+
+        <div class="yourStocksContainer">
+            <h1 style="border-bottom: 2px solid black; width: 80%; text-align: center"> YOUR STOCKS </h1>
         </div>
-        
-        <nav class="sidenav">
-            <section class="sidenav-content">
-                
-                <input [(ngModel)] = "abbreviation.ticker" style="position: fixed; text-align: center; height: 50px; width: 193px; font-size: 200%; padding: 10px; margin-top: 10px; margin-right: 10px; bottom: 250px" class="search_input" type="text" name="abbreviation">
-                <button (click)="checkIsRealStock()" style="position: fixed; margin-top: 10px; margin-left: 2px; bottom: 190px" class="btn btn-primary">ADD TO YOUR STOCKS</button>
-                
-            </section>
-        </nav>
+        <div *ngIf="show" class="stockCardsContainer">
+            <div class="column" *ngFor="let symbol of symbolData; let i = index;" style="margin: 10px">
+                <div>
+                    <div class="card">
+                        <div style="text-align: center; background-color: #e5e6e8" class="card-header">
+                            {{symbol["symbol"]}}
+                        </div>
+                        <div class="card-block">
+                            <div class="card-title">
+                                Latest Data Is From : {{symbol["Last Refreshed"]}}
+                            </div>
+                            <br>
+                            <div class="card-text">
+                                Open : {{symbol["1. open"]}}
+                            </div>
+                            <div class="card-text">
+                                High : {{symbol["2. high"]}}
+                            </div>
+                            <div class="card-text">
+                                Low : {{symbol["3. low"]}}
+                            </div>
+                            <div class="card-text">
+                                Close : {{symbol["4. close"]}}
+                            </div>
+                            <div class="card-text">
+                                Volume : {{symbol["5. volume"]}}
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-link"
+                                (click)="deleteStock(i, symbol.appUserId, symbol.stockId)">Delete Stock From
+                                Favorites</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <nav class="sidenav">
+        <section class="sidenav-content">
+            <div class="dailyInputAddStockContainer">
+                <input [(ngModel)]="abbreviation.ticker" class="dailyInput" type="text" name="abbreviation">
+                <button (click)="checkIsRealStock()" class="btn btn-primary dailyAddStock">ADD TO YOUR STOCKS</button>
+            </div>
+        </section>
+    </nav>
+</div>
