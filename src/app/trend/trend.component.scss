@@ -55,3 +55,26 @@
         right: 0px;
     }
 }
+
+.chart {
+    width: 350px !important;
+    height: 500px !important;
+}
+
+@media(min-width: 815px) and (max-width: 6000px) {
+    .chart {
+        min-width: 800px !important;
+        height: 600px !important;
+    }
+}
+
+@media(min-width: 650px) {
+    .chart {
+        width: 600px !important;
+        height: 600px !important;
+    }
+}
+
+.tableContainer {
+    overflow-x: auto; 
+}

@@ -10,14 +10,14 @@
 
 
   <div style="display: flex; justify-content: center" *ngIf="lineChartLabels.length > 0">
-    <canvas baseChart *ngIf="lineChartData" width="700" height="350" [datasets]="lineChartData"
+    <canvas class="chart" baseChart width="800" height="600" *ngIf="lineChartData" [datasets]="lineChartData"
       [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
       [chartType]="lineChartType"></canvas>
   </div>
 
   <br>
 </div>
-<div style="margin-bottom: 10px">
+<div class="tableContainer">
   <table class="table table-responsive table-condensed">
     <tr>
       <th *ngFor="let label of lineChartLabels">{{label}}</th>
