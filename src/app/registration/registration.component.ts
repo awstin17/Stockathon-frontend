@@ -32,7 +32,8 @@ export class RegistrationComponent implements OnInit {
       this._userservice.userToken = window.sessionStorage.getItem('token');
       this._userservice.userId = this._userservice.userToken = window.sessionStorage.getItem('userId');
       this._router.navigate(['/home']);
-     }
+     },
+     (err: any) => { alert("That email is either already in use or you did not use the correct format. Use 'email@email.com format")}
       )
   }
 }
