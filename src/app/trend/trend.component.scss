@@ -1,91 +1,92 @@
 .trendDescription {
-    text-align: center;
-    font-size: 18px;
+  text-align: center;
+  font-size: 18px;
 }
 
-@media(min-width: 600px) {
-    .trendDescription {
-        font-size: 24px;
-    }
+@media (min-width: 600px) {
+  .trendDescription {
+    font-size: 24px;
+  }
 }
 
-.buttonChartContainer {
-    display: flex; justify-content: space-between;
+#buttonChartContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
-@media(max-width: 975px) {
-    .buttonChartContainer {
-        flex-direction: column;
-        align-items: center;
-    }
+@media (max-width: 975px) {
+  #buttonChartContainer {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.trendInputButtonContainer {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    padding-right: 10px; 
-    border-right: 1px solid black; 
-    margin-left: 20px;
+#trendInputButtonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 10px;
+  border-right: 1px solid black;
+  margin-left: 20px;
 }
 
-@media(max-width: 975px) {
-    .trendInputButtonContainer {
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 0px;
-        border: 0px;
-        justify-content: space-evenly;
-        width: 80%;
-    }
+@media (max-width: 975px) {
+  #trendInputButtonContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0px;
+    border: 0px;
+    justify-content: space-evenly;
+    width: 80%;
+  }
 }
 
-.search_input {
-    width: 200px; 
-    height: 50px; 
-    text-align: center; 
-    font-size: 200%; 
-    position: relative; 
-    right: 20px; 
-    margin-bottom: 5px;
+#search_input {
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  font-size: 200%;
+  position: relative;
+  right: 20px;
+  margin-bottom: 5px;
 }
 
-@media(max-width: 975px) {
-    .search_input {
-        right: 0px;
-    }
+@media (max-width: 975px) {
+  #search_input {
+    right: 0px;
+  }
 }
 
 .sidenavButtons {
-    position: relative; 
-    right: 15px;
+  position: relative;
+  right: 15px;
 }
 
-@media(max-width: 975px) {
-    .sidenavButtons {
-        right: 0px;
-    }
+@media (max-width: 975px) {
+  .sidenavButtons {
+    right: 0px;
+  }
 }
 
-.chart {
-    width: 350px !important;
-    height: 500px !important;
+#chart {
+  width: 350px !important;
+  height: 500px !important;
 }
 
-@media(min-width: 815px) and (max-width: 6000px) {
-    .chart {
-        min-width: 800px !important;
-        height: 600px !important;
-    }
+@media (min-width: 650px) {
+  #chart {
+    width: 600px !important;
+    height: 600px !important;
+  }
 }
 
-@media(min-width: 650px) {
-    .chart {
-        width: 600px !important;
-        height: 600px !important;
-    }
+@media (min-width: 815px) and (max-width: 6000px) {
+  #chart {
+    min-width: 800px !important;
+    height: 600px !important;
+  }
 }
 
-.tableContainer {
-    overflow-x: auto; 
+#tableContainer {
+  overflow-x: auto;
 }
