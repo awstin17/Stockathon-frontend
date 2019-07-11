@@ -9,12 +9,9 @@ import { StockService } from "../stock.service"
 export class TrendComponent {
     constructor(private _stockservice: StockService) {}
 
-    abbreviation: any = {
-        ticker: ""
-    }
+    abbreviation: any = ""
     data: any
-    closingNumbers: number[] = []
-    months: number = 12
+    closingNumbers: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     i: number = 0
 
     public lineChartData: Array<any> = [{ data: [], label: "Series A" }]
@@ -57,8 +54,11 @@ export class TrendComponent {
 
     //This OnInit creates the array of months that become the chart and table labels
     ngOnInit() {
-        let date = new Date()
-        let monthNum = date.getMonth()
+        this.setLabels()
+    }
+
+    setLabels() {
+        let monthNum = new Date().getMonth()
         let arrayOfMonths = [
             "January",
             "February",
@@ -94,7 +94,7 @@ export class TrendComponent {
             // This is adding one to my counter, and if the counter equals the number of months i want to display
             //(in this case 12), the loop stops
             this.i++
-            if (this.i === this.months) {
+            if (this.i === 12) {
                 break
             }
         }
@@ -107,8 +107,9 @@ export class TrendComponent {
     //When the search button is clicked, this method gets the monthly data from the stock API based on the acronym in the input
     //Then, if you get a successful response, it saves that data, manipulates it to a presentable form, then updates the chart
     searchMonthlyData() {
-        this._stockservice.getMonthlyData(this.abbreviation.ticker).subscribe(
-            (response: any) => {
+        this._stockservice
+            .getMonthlyData(this.abbreviation)
+            .subscribe((response: any) => {
                 if (response["Error Message"]) {
                     window.alert(
                         "This is not a real stock symbol or there is no monthly data for this symbol. Try another"
@@ -117,9 +118,6 @@ export class TrendComponent {
                     this.data = response
                     this.updateChart()
                 }
-            },
-            error => {},
-            () => {}
-        )
+            })
     }
 }
