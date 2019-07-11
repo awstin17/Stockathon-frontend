@@ -110,7 +110,9 @@ export class TrendComponent {
         this._stockservice.getMonthlyData(this.abbreviation.ticker).subscribe(
             (response: any) => {
                 if (response["Error Message"]) {
-                    window.alert("This is not a real stock symbol. Try another")
+                    window.alert(
+                        "This is not a real stock symbol or there is no monthly data for this symbol. Try another"
+                    )
                 } else {
                     this.data = response
                     this.updateChart()
