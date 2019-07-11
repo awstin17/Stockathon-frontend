@@ -1,31 +1,30 @@
-<h1 class="trendDescription">Use this page to search for a company's stock value from the past twelve months up until the current month</h1>
+<h1 class="trendDescription">Use this page to search for a company's stock value from the past twelve months up until
+    the current month</h1>
 <br><br>
 <div class="buttonChartContainer">
-  <div class="trendInputButtonContainer">
-    <input class="search_input" type="text" name="abbreviation" [(ngModel)]="abbreviation.ticker">
-    <button class="btn btn-primary sidenavButtons" (click)="checkIsRealStock('search')">Search</button>
-    <button class="btn btn-primary sidenavButtons" (click)="checkIsRealStock('addToFavorites')">Add to
-      Favorites</button>
-  </div>
-  <br>
-  <br>
+    <div class="trendInputButtonContainer">
+        <input class="search_input" type="text" name="abbreviation" [(ngModel)]="abbreviation.ticker">
+        <button class="btn btn-primary sidenavButtons" (click)="searchMonthlyData()">Search</button>
+    </div>
+    <br>
+    <br>
 
 
-  <div style="display: flex; justify-content: center" *ngIf="lineChartLabels.length > 0">
-    <canvas class="chart" baseChart width="800" height="600" *ngIf="lineChartData" [datasets]="lineChartData"
-      [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
-      [chartType]="lineChartType"></canvas>
-  </div>
+    <div style="display: flex; justify-content: center" *ngIf="lineChartLabels.length > 0">
+        <canvas class="chart" baseChart width="800" height="600" *ngIf="lineChartData" [datasets]="lineChartData"
+            [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+            [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+    </div>
 
-  <br>
+    <br>
 </div>
 <div class="tableContainer">
-  <table class="table table-responsive table-condensed">
-    <tr>
-      <th *ngFor="let label of lineChartLabels">{{label}}</th>
-    </tr>
-    <tr *ngFor="let d of lineChartData">
-      <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-    </tr>
-  </table>
+    <table class="table table-responsive table-condensed">
+        <tr>
+            <th *ngFor="let label of lineChartLabels">{{label}}</th>
+        </tr>
+        <tr>
+            <td *ngFor="let closingNumber of closingNumbers">{{closingNumber}}</td>
+        </tr>
+    </table>
 </div>
