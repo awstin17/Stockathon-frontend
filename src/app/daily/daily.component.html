@@ -10,36 +10,36 @@
             <h1 style="border-bottom: 2px solid black; width: 80%; text-align: center"> YOUR STOCKS </h1>
         </div>
         <div *ngIf="show" class="stockCardsContainer">
-            <div class="column" *ngFor="let symbol of symbolData; let i = index;" style="margin: 10px">
+            <div class="column" *ngFor="let stock of formattedStockData; let i = index;" style="margin: 10px">
                 <div>
                     <div class="card">
                         <div style="text-align: center; background-color: #e5e6e8" class="card-header">
-                            {{symbol["symbol"]}}
+                            {{stock["symbol"]}}
                         </div>
                         <div class="card-block">
                             <div class="card-title">
-                                Latest Data Is From : {{symbol["Last Refreshed"]}}
+                                Latest Data Is From : {{stock["Last Refreshed"]}}
                             </div>
                             <br>
                             <div class="card-text">
-                                Open : {{symbol["1. open"]}}
+                                Open : {{stock["1. open"]}}
                             </div>
                             <div class="card-text">
-                                High : {{symbol["2. high"]}}
+                                High : {{stock["2. high"]}}
                             </div>
                             <div class="card-text">
-                                Low : {{symbol["3. low"]}}
+                                Low : {{stock["3. low"]}}
                             </div>
                             <div class="card-text">
-                                Close : {{symbol["4. close"]}}
+                                Close : {{stock["4. close"]}}
                             </div>
                             <div class="card-text">
-                                Volume : {{symbol["5. volume"]}}
+                                Volume : {{stock["5. volume"]}}
                             </div>
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-sm btn-link"
-                                (click)="deleteStock(i, symbol.appUserId, symbol.stockId)">Delete Stock From
+                                (click)="deleteStock(i, stock.appUserId, stock.stockId)">Delete Stock From
                                 Favorites</button>
                         </div>
 

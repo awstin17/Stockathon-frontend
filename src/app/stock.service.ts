@@ -8,10 +8,10 @@ import "rxjs/add/observable/forkJoin"
 export class StockService {
     constructor(private http: HttpClient) {}
 
-    getMonthlyData(abbreviation) {
+    getMonthlyData(stock) {
         return this.http.get(
             "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=" +
-                abbreviation +
+                stock +
                 "&apikey=T5397L2SSQQ1C8H9"
         )
     }

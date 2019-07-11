@@ -12,12 +12,10 @@ export class DailyComponent implements OnInit {
     abbreviation: any = {
         ticker: ""
     }
-    // tickers: any = [];
-    ticker
-    symbolData: any = []
+    stockData: any
+    formattedStockData: any = []
     show: any
     userStocks: any
-    stockData: any
 
     constructor(
         private _stockservice: StockService,
@@ -32,7 +30,6 @@ export class DailyComponent implements OnInit {
             .getFavorites(this._userservice.userId, this._userservice.userToken)
             .subscribe(response => {
                 this.userStocks = response
-                console.log(this.userStocks)
 
                 //This for loop loops through the array of stock objects and creates a new array of ticker strings
 
@@ -56,23 +53,23 @@ export class DailyComponent implements OnInit {
                             for (let date in this.stockData[i][
                                 "Time Series (1min)"
                             ]) {
-                                this.symbolData[i] = this.stockData[i][
+                                this.formattedStockData[i] = this.stockData[i][
                                     "Time Series (1min)"
                                 ][date]
-                                this.symbolData[i]["symbol"] = this.stockData[
-                                    i
-                                ]["Meta Data"]["2. Symbol"]
-                                this.symbolData[i][
+                                this.formattedStockData[i][
+                                    "symbol"
+                                ] = this.stockData[i]["Meta Data"]["2. Symbol"]
+                                this.formattedStockData[i][
                                     "Last Refreshed"
                                 ] = this.stockData[i]["Meta Data"][
                                     "3. Last Refreshed"
                                 ]
-                                this.symbolData[i][
+                                this.formattedStockData[i][
                                     "appUserId"
                                 ] = this.userStocks[i].appUserId
-                                this.symbolData[i]["stockId"] = this.userStocks[
-                                    i
-                                ].id
+                                this.formattedStockData[i][
+                                    "stockId"
+                                ] = this.userStocks[i].id
                                 break
                             }
                         }
@@ -85,8 +82,9 @@ export class DailyComponent implements OnInit {
     }
 
     checkIsRealStock() {
-        this._stockservice.getDailyData(this.abbreviation.ticker).subscribe(
-            response => {
+        this._stockservice
+            .getDailyData(this.abbreviation.ticker)
+            .subscribe(response => {
                 if (response["Error Message"]) {
                     window.alert(
                         "This is not a real stock symbol or there is no daily data for this symbol. Try another"
@@ -94,10 +92,7 @@ export class DailyComponent implements OnInit {
                 } else {
                     this.addStock()
                 }
-            },
-            error => {},
-            () => {}
-        )
+            })
     }
 
     addStock() {
@@ -109,7 +104,6 @@ export class DailyComponent implements OnInit {
             )
             .subscribe(
                 response => {
-                    console.log(response)
                     window.location.reload()
                 },
                 error => console.log(error)
@@ -121,13 +115,12 @@ export class DailyComponent implements OnInit {
     }
 
     deleteStock(i, userId, stockId) {
-        this.symbolData.splice(i, 1)
-        console.log(userId, stockId)
+        this.formattedStockData.splice(i, 1)
         this._stockservice
             .deleteStock(userId, stockId)
             .subscribe(
-                res => console.log("success!"),
-                err => console.log("failure :(")
+                res => alert("successful deletion!"),
+                err => alert("No deletion. Something went wrong :(")
             )
     }
 }
