@@ -2,7 +2,7 @@
 
 # Stockathon
 
-Stockathon allows users to track stocks they care about and look up trends for new stocks they potential want to keep tabs on. All stock information is gathered using the [Alpha Vantage stock API](https://www.alphavantage.co/). 
+Stockathon allows users to track stocks they care about and look up trends for new stocks they want to keep tabs on. All stock information is gathered using the [Alpha Vantage stock API](https://www.alphavantage.co/). 
 
 Getting started
 ----------------------------------
